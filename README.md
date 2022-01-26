@@ -131,7 +131,6 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
 ###### Product Comparison Info End ######
 
 ```
-## Structure
 
 3. Run a Catalog Sync.
 
