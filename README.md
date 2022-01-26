@@ -154,11 +154,13 @@ INSERT_UPDATE ProductComparisonProperty; name  ; fieldValueProvider             
 ### Product Listing Page
 [![ProductComparison](https://github.com/margaritcatalin/product-comparison/blob/main/images/product-comparison-plp.png?raw=true)](#)
 
-### Product Details Page (The bottom pop-up will be displayed in the Product Listing Page and the Product Details Page.)
+### Product Details Page 
+The bottom pop-up will be displayed in the Product Listing Page and the Product Details Page.
 [![ProductComparison](https://github.com/margaritcatalin/product-comparison/blob/main/images/product-comparison-pdp.png?raw=true)](#)
 
 ### Product comparison table
 [![ProductComparison](https://github.com/margaritcatalin/product-comparison/blob/main/images/product-comparison-page.png?raw=true)](#)
 
-### Product comparison table (Highlighted differences)
+### Product comparison table 
+Highlighted differences
 [![ProductComparison](https://github.com/margaritcatalin/product-comparison/blob/main/images/product-comparison-page-highlight.png?raw=true)](#)
