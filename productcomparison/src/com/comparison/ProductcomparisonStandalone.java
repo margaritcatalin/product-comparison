@@ -20,18 +20,20 @@ import de.hybris.platform.util.Utilities;
  */
 public class ProductcomparisonStandalone
 {
-	/**
-	 * Main class to be able to run it directly as a java program.
-	 * 
-	 * @param args
-	 *           the arguments from commandline
-	 */
-	public static void main(final String[] args)
+    /**
+     * Main class to be able to run it directly as a java program.
+     *
+     * @param args the arguments from commandline
+     */
+    public static void main(final String[] args)
 	{
 		new ProductcomparisonStandalone().run();
 	}
 
-	public void run()
+    /**
+     * Run.
+     */
+    public void run()
 	{
 		Registry.activateStandaloneMode();
 		Registry.activateMasterTenant();

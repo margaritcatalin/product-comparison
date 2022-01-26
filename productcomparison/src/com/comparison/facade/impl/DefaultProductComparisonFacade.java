@@ -19,6 +19,8 @@ import org.apache.log4j.Logger;
 import java.util.*;
 
 /**
+ * The type Default product comparison facade.
+ *
  * @author Catalin Margarit
  */
 public class DefaultProductComparisonFacade implements ProductComparisonFacade {
@@ -27,11 +29,23 @@ public class DefaultProductComparisonFacade implements ProductComparisonFacade {
     private final ConfigurationService configurationService;
     private final ProductService productService;
     private final ProductFacade productFacade;
+    /**
+     * The Options.
+     */
     final List<ProductOption> options = new ArrayList<>(Arrays.asList(ProductOption.BASIC, ProductOption.URL, ProductOption.GALLERY));
 
     private final Logger LOG = Logger.getLogger(DefaultProductComparisonFacade.class);
     private final int MAX_QUEUE_SIZE;
 
+    /**
+     * Instantiates a new Default product comparison facade.
+     *
+     * @param productComparisonPropertyService the product comparison property service
+     * @param sessionService                   the session service
+     * @param configurationService             the configuration service
+     * @param productService                   the product service
+     * @param productFacade                    the product facade
+     */
     public DefaultProductComparisonFacade(ProductComparisonPropertyService<ProductModel, Object> productComparisonPropertyService, SessionService sessionService, ConfigurationService configurationService, ProductService productService, ProductFacade productFacade) {
         this.productComparisonPropertyService = productComparisonPropertyService;
         this.sessionService = sessionService;
@@ -41,6 +55,11 @@ public class DefaultProductComparisonFacade implements ProductComparisonFacade {
         MAX_QUEUE_SIZE = getConfigurationService().getConfiguration().getInt("product.comparison.max.queue.size", 3);
     }
 
+    /**
+     * Process product comparison map.
+     *
+     * @return the map
+     */
     @Override
     public Map<String, LinkedList<Object>> processProductComparison() {
         Map<String, LinkedList<Object>> productComparison = new HashMap<>();
@@ -66,6 +85,12 @@ public class DefaultProductComparisonFacade implements ProductComparisonFacade {
         return productComparison;
     }
 
+    /**
+     * Gets all marked elements.
+     *
+     * @param productComparison the product comparison
+     * @return the all marked elements
+     */
     @Override
     public Map<String, Boolean> getAllMarkedElements(Map<String, LinkedList<Object>> productComparison) {
         Map<String, Boolean> markElements = new HashMap<>();
@@ -75,12 +100,23 @@ public class DefaultProductComparisonFacade implements ProductComparisonFacade {
         return markElements;
     }
 
+    /**
+     * Verify all equal using stream boolean.
+     *
+     * @param list the list
+     * @return the boolean
+     */
     public boolean verifyAllEqualUsingStream(List<Object> list) {
         return list.stream()
                 .distinct()
                 .count() <= 1;
     }
 
+    /**
+     * Gets product comparison codes.
+     *
+     * @return the product comparison codes
+     */
     @Override
     public List<String> getProductComparisonCodes() {
         final List productComparisonCodes = Arrays.asList(retrieveQueueFromSession());
@@ -90,6 +126,12 @@ public class DefaultProductComparisonFacade implements ProductComparisonFacade {
         return Collections.EMPTY_LIST;
     }
 
+    /**
+     * Add product to product comparison queue boolean.
+     *
+     * @param code the code
+     * @return the boolean
+     */
     @Override
     public boolean addProductToProductComparisonQueue(final String code) {
         if (Objects.isNull(code)) {
@@ -117,6 +159,11 @@ public class DefaultProductComparisonFacade implements ProductComparisonFacade {
         return true;
     }
 
+    /**
+     * Remove product comparison queue string.
+     *
+     * @return the string
+     */
     @Override
     public String removeProductComparisonQueue() {
         //RETRIEVE CURRENT QUEUE
@@ -133,6 +180,12 @@ public class DefaultProductComparisonFacade implements ProductComparisonFacade {
         return removed;
     }
 
+    /**
+     * Remove product from product comparison queue boolean.
+     *
+     * @param productCode the product code
+     * @return the boolean
+     */
     @Override
     public boolean removeProductFromProductComparisonQueue(final String productCode) {
         //RETRIEVE QUEUE
@@ -147,6 +200,9 @@ public class DefaultProductComparisonFacade implements ProductComparisonFacade {
         return removed;
     }
 
+    /**
+     * Clear product comparison queue.
+     */
     @Override
     public void clearProductComparisonQueue() {
         final Queue queue = retrieveQueueFromSession();
@@ -154,6 +210,11 @@ public class DefaultProductComparisonFacade implements ProductComparisonFacade {
         updateQueueToSession(queue);
     }
 
+    /**
+     * Gets all comparison elements.
+     *
+     * @return the all comparison elements
+     */
     @Override
     public List<ComparisonItemData> getAllComparisonElements() {
         final List<String> codes = this.getProductComparisonCodes();
@@ -189,22 +250,47 @@ public class DefaultProductComparisonFacade implements ProductComparisonFacade {
         sessionService.setAttribute(ProductcomparisonConstants.SESSION_ATTR_PRODUCTCOMPARISON, wrapperQueue);
     }
 
+    /**
+     * Gets product comparison property service.
+     *
+     * @return the product comparison property service
+     */
     public ProductComparisonPropertyService<ProductModel, Object> getProductComparisonPropertyService() {
         return productComparisonPropertyService;
     }
 
+    /**
+     * Gets session service.
+     *
+     * @return the session service
+     */
     public SessionService getSessionService() {
         return sessionService;
     }
 
+    /**
+     * Gets configuration service.
+     *
+     * @return the configuration service
+     */
     public ConfigurationService getConfigurationService() {
         return configurationService;
     }
 
+    /**
+     * Gets product service.
+     *
+     * @return the product service
+     */
     public ProductService getProductService() {
         return productService;
     }
 
+    /**
+     * Gets product facade.
+     *
+     * @return the product facade
+     */
     public ProductFacade getProductFacade() {
         return productFacade;
     }

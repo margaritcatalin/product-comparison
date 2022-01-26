@@ -17,6 +17,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
+ * The type Default product comparison property service.
+ *
+ * @param <T> the type parameter
+ * @param <D> the type parameter
  * @author Catalin Margarit
  */
 public class DefaultProductComparisonPropertyService<T extends ProductModel, D> implements ProductComparisonPropertyService<T, D> {
@@ -24,17 +28,36 @@ public class DefaultProductComparisonPropertyService<T extends ProductModel, D> 
     private final ModelService modelService;
     private final TypeService typeService;
 
+    /**
+     * Instantiates a new Default product comparison property service.
+     *
+     * @param productComparisonPropertyDao the product comparison property dao
+     * @param modelService                 the model service
+     * @param typeService                  the type service
+     */
     public DefaultProductComparisonPropertyService(ProductComparisonPropertyDao productComparisonPropertyDao, ModelService modelService, TypeService typeService) {
         this.productComparisonPropertyDao = productComparisonPropertyDao;
         this.modelService = modelService;
         this.typeService = typeService;
     }
 
+    /**
+     * Gets all product comparison properties.
+     *
+     * @return the all product comparison properties
+     */
     @Override
     public List<ProductComparisonPropertyModel> getAllProductComparisonProperties() {
         return getProductComparisonPropertyDao().find();
     }
 
+    /**
+     * Gets attribute value.
+     *
+     * @param model              the model
+     * @param comparisonProperty the comparison property
+     * @return the attribute value
+     */
     @Override
     public D getAttributeValue(T model, ProductComparisonPropertyModel comparisonProperty) {
         if (Objects.isNull(comparisonProperty.getFieldValueProvider()) || StringUtils.isBlank(comparisonProperty.getFieldValueProvider())) {
@@ -59,6 +82,13 @@ public class DefaultProductComparisonPropertyService<T extends ProductModel, D> 
         return null;
     }
 
+    /**
+     * Gets attribute label.
+     *
+     * @param model              the model
+     * @param comparisonProperty the comparison property
+     * @return the attribute label
+     */
     @Override
     public String getAttributeLabel(T model, ProductComparisonPropertyModel comparisonProperty) {
         if (Objects.isNull(comparisonProperty.getFieldNameProvider()) || StringUtils.isBlank(comparisonProperty.getFieldNameProvider())) {
@@ -91,24 +121,51 @@ public class DefaultProductComparisonPropertyService<T extends ProductModel, D> 
         return null;
     }
 
+    /**
+     * Gets field value provider.
+     *
+     * @param property the property
+     * @return the field value provider
+     */
     protected ProductComparisonFieldValueProvider<T, D> getFieldValueProvider(final ProductComparisonPropertyModel property) {
         final String name = property.getFieldValueProvider();
         return Objects.nonNull(name) ? Registry.getApplicationContext().getBean(name, ProductComparisonFieldValueProvider.class) : null;
     }
 
+    /**
+     * Gets field label provider.
+     *
+     * @param property the property
+     * @return the field label provider
+     */
     protected ProductComparisonFieldLabelProvider<T> getFieldLabelProvider(final ProductComparisonPropertyModel property) {
         final String name = property.getFieldNameProvider();
         return Objects.nonNull(name) ? Registry.getApplicationContext().getBean(name, ProductComparisonFieldLabelProvider.class) : null;
     }
 
+    /**
+     * Gets product comparison property dao.
+     *
+     * @return the product comparison property dao
+     */
     public ProductComparisonPropertyDao getProductComparisonPropertyDao() {
         return productComparisonPropertyDao;
     }
 
+    /**
+     * Gets type service.
+     *
+     * @return the type service
+     */
     public TypeService getTypeService() {
         return typeService;
     }
 
+    /**
+     * Gets model service.
+     *
+     * @return the model service
+     */
     public ModelService getModelService() {
         return modelService;
     }

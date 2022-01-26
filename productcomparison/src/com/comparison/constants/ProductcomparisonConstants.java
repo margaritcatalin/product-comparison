@@ -9,8 +9,14 @@ package com.comparison.constants;
 @SuppressWarnings("deprecation")
 public final class ProductcomparisonConstants extends GeneratedProductcomparisonConstants
 {
-	public static final String EXTENSIONNAME = "productcomparison";
-	public static final String SESSION_ATTR_PRODUCTCOMPARISON = "productComparisonList";
+    /**
+     * The constant EXTENSIONNAME.
+     */
+    public static final String EXTENSIONNAME = "productcomparison";
+    /**
+     * The constant SESSION_ATTR_PRODUCTCOMPARISON.
+     */
+    public static final String SESSION_ATTR_PRODUCTCOMPARISON = "productComparisonList";
 
 	private ProductcomparisonConstants()
 	{
