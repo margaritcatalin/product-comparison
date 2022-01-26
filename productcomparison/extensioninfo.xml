@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+--><extensioninfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="extensioninfo.xsd">
+        	
+    
+    <extension abstractclassprefix="Generated" classprefix="Productcomparison" description="productcomparison extension" managername="ProductcomparisonManager" managersuperclass="de.hybris.platform.jalo.extension.Extension" name="productcomparison">
+                		
+        <requires-extension name="addonsupport"/>
+        <requires-extension name="acceleratorstorefrontcommons"/>
+        <coremodule generated="true" manager="com.comparison.jalo.ProductcomparisonManager" packageroot="com.comparison"/>
+        <meta key="classpathgen" value="false"/>
+
+    </extension>
+        
+
+</extensioninfo>

@@ -1,0 +1,143 @@
+.product-comparison-bar {
+  position: fixed;
+  width: 100%;
+  left: 0;
+  top: auto;
+  bottom: -1px;
+  z-index: 10000;
+  height: 120px;
+  overflow: hidden;
+  transition: all .3s ease;
+  clear: both;
+  background-color: #646c77;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 4%;
+  //box-shadow: -2px 2px 10px 0px rgb(68 68 68 / 40%);
+}
+
+.product-comparison-bar ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  order: 3;
+}
+
+.product-comparison-bar #clear-all-compare {
+  display: block;
+  text-transform: uppercase;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.product-comparison-bar .btn {
+  order: 2;
+  font-size: 14px;
+}
+
+.product-comparison-bar ul li {
+  list-style-type: none;
+  background: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  color: #007f9b;
+  position: relative;
+}
+
+.product-comparison-bar .product-comparison-record {
+  width: 70%;
+  margin: 0;
+  font-size: 14px;
+  color: white;
+  order: 1;
+}
+
+.product-comparison-bar ul li .deselect {
+  display: none;
+  font-size: 12px;
+  color: white;
+  position: absolute;
+  top: -6px;
+  right: -14px;
+}
+
+.table-compare-product-sku {
+  color: #007f9b;
+}
+
+.table-compare-diff {
+  background-color: #fff5e6 !important;
+}
+
+.table-compare-diff:nth-of-type(odd) {
+  background-color: #ffebcc !important;
+}
+
+.btn-default-highlight {
+  border: 3px solid;
+  color: #ffffff;
+  background-color: #00a9ce;
+  border-color: #00a9ce;
+}
+
+.btn-default-highlight:hover, .btn-default-highlight:focus, .btn-default-highlight:active, .btn-default-highlight.active, .open .dropdown-toggle.btn-default-highlight {
+  color: #ffffff;
+}
+
+.btn-active-highlight {
+  border: 3px solid;
+  color: #00a9ce;
+  background-color: #ffffff;
+  border-color: #00a9ce;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn-active-highlight:hover, .btn-active-highlight:focus, .btn-active-highlight:active, .btn-active-highlight.active, .open .dropdown-toggle.btn-active-highlight {
+  color: #00a9ce;
+}
+
+@media (min-width: 768px) {
+  .product-comparison-bar {
+    flex-flow: row nowrap;
+    height: auto;
+    padding: 10px 2%;
+  }
+
+  .product-comparison-bar ul li {
+    padding: 5px 10px;
+  }
+
+  .product-comparison-bar .product-comparison-record {
+    width: 26%;
+  }
+
+  .product-comparison-bar ul {
+    width: 54%;
+    order: 2;
+    justify-content: space-between;
+  }
+
+  .product-comparison-bar .btn {
+    order: 3;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 992px) {
+  .product-comparison-bar ul {
+    justify-content: space-around;
+  }
+}
+
+@media (min-width: 480px) {
+  .product-comparison-bar ul li .deselect {
+    display: block;
+  }
+}

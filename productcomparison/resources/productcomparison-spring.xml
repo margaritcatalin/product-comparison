@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <bean id="productcomparisonCoreDataImportedEventListener" parent="abstractCoreDataImportedEventListener">
+        <property name="supportedChannels">
+            <list value-type="de.hybris.platform.commerceservices.enums.SiteChannel">
+                <value>B2C</value>
+                <value>B2B</value>
+            </list>
+        </property>
+        <property name="addonExtensionMetadata">
+            <bean class="de.hybris.platform.addonsupport.data.AddonExtensionMetadata">
+                <property name="suffixChannel" value="false"/>
+                <property name="baseExtensionName" value="productcomparison"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="productcomparisonSampleDataEventListener" parent="abstractGenericAddOnSampleDataEventListener">
+        <property name="extensionName" value="productcomparison"/>
+    </bean>
+
+    <alias name="defaultProductComparisonPropertyDao" alias="productComparisonPropertyDao"/>
+    <bean id="defaultProductComparisonPropertyDao" class="com.comparison.dao.impl.DefaultProductComparisonPropertyDao"/>
+
+    <alias name="defaultProductComparisonPropertyService" alias="productComparisonPropertyService"/>
+    <bean id="defaultProductComparisonPropertyService" class="com.comparison.service.impl.DefaultProductComparisonPropertyService">
+        <constructor-arg name="productComparisonPropertyDao" ref="productComparisonPropertyDao"/>
+        <constructor-arg name="modelService" ref="modelService"/>
+        <constructor-arg name="typeService" ref="typeService"/>
+    </bean>
+
+    <alias name="defaultProductComparisonFacade" alias="productComparisonFacade"/>
+    <bean id="defaultProductComparisonFacade" class="com.comparison.facade.impl.DefaultProductComparisonFacade">
+        <constructor-arg name="productComparisonPropertyService" ref="productComparisonPropertyService"/>
+        <constructor-arg name="sessionService" ref="sessionService"/>
+        <constructor-arg name="configurationService" ref="configurationService"/>
+        <constructor-arg name="productService" ref="productService"/>
+        <constructor-arg name="productFacade" ref="productFacade"/>
+    </bean>
+
+    <alias name="defaultUnitComparisonFieldValueProvider" alias="unitComparisonFieldValueProvider"/>
+    <bean id="defaultUnitComparisonFieldValueProvider" class="com.comparison.service.providers.DefaultUnitComparisonFieldValueProvider"/>
+
+    <alias name="defaultVariantCategoryFieldValueProvider" alias="variantCategoryFieldValueProvider"/>
+    <bean id="defaultVariantCategoryFieldValueProvider" class="com.comparison.service.providers.DefaultVariantCategoryFieldValueProvider"/>
+
+    <alias name="defaultVariantCategoryFieldLabelProvider" alias="variantCategoryFieldLabelProvider"/>
+    <bean id="defaultVariantCategoryFieldLabelProvider" class="com.comparison.service.providers.DefaultVariantCategoryFieldLabelProvider"/>
+</beans>

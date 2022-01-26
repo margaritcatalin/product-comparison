@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<!--
+	ATTENTION: This is just an example file. You have to edit it according to your needs.
+-->
+
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="items.xsd">
+
+    <itemtypes>
+        <itemtype code="ProductComparisonProperty" jaloclass="com.comparison.jalo.config.ProductComparisonProperty"
+                  extends="GenericItem" autocreate="true" generate="true">
+            <deployment table="PCProperty" typecode="16022"/>
+            <attributes>
+                <attribute qualifier="name" type="java.lang.String">
+                    <description>name of the property</description>
+                    <persistence type="property"/>
+                    <modifiers initial="true" read="true" write="false" search="true" optional="false"/>
+                </attribute>
+                <attribute qualifier="fieldValueProvider" type="java.lang.String">
+                    <description>fieldValueProvider used by this property</description>
+                    <persistence type="property"/>
+                    <modifiers optional="true"/>
+                </attribute>
+                <attribute qualifier="fieldNameProvider" type="java.lang.String">
+                    <description>fieldNameProvider used by this property</description>
+                    <persistence type="property"/>
+                    <modifiers optional="true"/>
+                </attribute>
+            </attributes>
+        </itemtype>
+
+        <itemtype code="ProductComparisonComponent" extends="SimpleCMSComponent" generate="true" autocreate="true"
+                  jaloclass="com.comparison.jalo.cms.ProductComparisonComponent">
+        </itemtype>
+
+        <itemtype code="ProductComparisonInfoComponent" extends="SimpleCMSComponent" generate="true" autocreate="true"
+                  jaloclass="com.comparison.jalo.cms.ProductComparisonInfoComponent">
+        </itemtype>
+
+        <itemtype code="AddToCompareAction"
+                  jaloclass="com.comparison.jalo.actions.AddToCartAction"
+                  extends="SimpleCMSAction" autocreate="true" generate="true">
+        </itemtype>
+
+        <itemtype code="ListAddToCompareAction"
+                  jaloclass="com.comparison.jalo.actions.ListAddToCompareAction"
+                  extends="SimpleCMSAction" autocreate="true" generate="true">
+        </itemtype>
+    </itemtypes>
+</items>
