@@ -1,6 +1,6 @@
 # Product Comparison Installation Guide
 
-This repository contains the sources for a Product Comparison solution. Please report Issues here. 
+This repository contains the source code for a Product Comparison solution. Please report Issues here. 
 
 ## Instalation steps:
  1. Run 
