@@ -1,13 +1,13 @@
 # Product Comparison Installation Guide
 
-This repository contains the source code for a Product Comparison solution. Please report Issues here. 
+This repository contains the source code for a Product Comparison solution. Please report any issues here. 
 
 ## Instalation steps:
- 1. Run 
+ 1. Run the next command.
  ```
  ant addoninstall -Daddonnames="productcomparison" -DaddonStorefront.yacceleratorstorefront="teststorefront"
 ```
-2. Import next impex file:
+2. Import the next impex file.
 ```
 # -----------------------------------------------------------------------
 # Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
@@ -135,14 +135,14 @@ INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = tr
 3. Run a Catalog Sync.
 
 
-## How to add another attributes to product comparison page.
+## Configure the product comparison page.
 
-To add a new attribute to the product comparison page you need to write an impex file with the next configuration:
-- name : This attribute represent the attribute unique descriptor ( ex: code, name, unit, s.a.m.d).
-- fieldValueProvider : This attribute is used to take the value for the attribute. This can be done just implementing the ```ProductComparisonFieldValueProvider``` interface (Example: ```DefaultVariantCategoryFieldValueProvider```).  For the any text attribute it can be blank.
-- fieldNameProvider : This attribute is used to change the displayed attribute name. This can be done just implementing the ```ProductComparisonFieldLabelProvider``` interface (Example: ```DefaultVariantCategoryFieldLabelProvider```). If this attribute is black it will use the backoffice label.
+To add a new attribute to the product comparison page, you need to write an impex file with the following configuration:
+- name : The product attribute backend identifier (for example, code, name, unit, and so on).
+- fieldValueProvider : This attribute is used to retrive the value for the product attribute. A value provider needs to implement the ```ProductComparisonFieldValueProvider``` interface (for example, ```DefaultVariantCategoryFieldValueProvider```). The fieldValueProvider can be left blank if the product attribut is a text.
+- fieldNameProvider : This attribute is used to change the displayed attribute name. A feld label provider needs to implement the ```ProductComparisonFieldLabelProvider``` interface (for example, ```DefaultVariantCategoryFieldLabelProvider```). If the attribute is blank, the backoffice label will be used.
 
-Example:
+An example for product comparison configuration:
 ```
 INSERT_UPDATE ProductComparisonProperty; name  ; fieldValueProvider                ; fieldNameProvider                ;
                                        ; name  ;                                   ;                                  ;
@@ -154,7 +154,7 @@ INSERT_UPDATE ProductComparisonProperty; name  ; fieldValueProvider             
 ### Product Listing Page
 [![ProductComparison](https://github.com/margaritcatalin/product-comparison/blob/main/images/product-comparison-plp.png?raw=true)](#)
 
-### Product Details Page (The bottom popup will be displayed in Product Listing Page and Product Details Page)
+### Product Details Page (The bottom pop-up will be displayed in the Product Listing Page and the Product Details Page.)
 [![ProductComparison](https://github.com/margaritcatalin/product-comparison/blob/main/images/product-comparison-pdp.png?raw=true)](#)
 
 ### Product comparison table
