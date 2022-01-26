@@ -161,6 +161,5 @@ The bottom pop-up will be displayed in the Product Listing Page and the Product 
 ### Product comparison table
 [![ProductComparison](https://github.com/margaritcatalin/product-comparison/blob/main/images/product-comparison-page.png?raw=true)](#)
 
-### Product comparison table 
-Highlighted differences
+### Product comparison table (Highlighted differences)
 [![ProductComparison](https://github.com/margaritcatalin/product-comparison/blob/main/images/product-comparison-page-highlight.png?raw=true)](#)
